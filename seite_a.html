@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Der Heilige Quran</title>
+  <link rel="icon" type="image/jpeg" href="waqf-e-rahallah.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Grundstyles */
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('ts.jpg') no-repeat center center fixed; /* Hintergrundbild */
+      background-size: cover; /* Sicherstellen, dass das Bild den gesamten Bildschirm abdeckt */
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+    }
+
+    /* Fixiertes Menü */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.8); /* Halbdurchsichtiger Hintergrund */
+      padding: 15px 0;
+      z-index: 1000;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 0 20px;
+    }
+
+    nav ul li a {
+      font-size: 1.2rem;
+      color: #FF6600; /* Orange */
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* LED-Effekt beim Hover und Klick */
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #fff;
+      text-shadow: 0px 0px 15px #FF6600, 0px 0px 30px #FF6600, 0px 0px 45px #FF6600;
+      transition: all 0.4s ease-out;
+    }
+
+    /* Container für den Hauptinhalt */
+    main {
+      width: 90%;
+      max-width: 1200px;
+      padding-top: 150px; /* Platz für das fixierte Menü */
+      text-align: center;
+    }
+
+    /* Liste der Suren */
+    .surah-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 0;
+      list-style: none;
+      margin-top: 40px;
+    }
+
+    .surah-list li {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #fff;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.6); /* Halbdurchsichtiger Hintergrund */
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .surah-list li:hover {
+      background-color: #FF6600; /* Orange beim Hover */
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .quran-link {
+      display: inline-block;
+      font-size: 1.3rem;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 25px;
+      background-color: #FF6600; /* Orange */
+      border-radius: 30px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .quran-link:hover {
+      background-color: #e65c00; /* Dunkleres Orange beim Hover */
+      transform: scale(1.05);
+    }
+
+    /* Responsive Anpassungen */
+    @media (max-width: 768px) {
+      nav ul li {
+        margin: 0 10px;
+      }
+
+      .surah-list {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+
+      /* Auf kleinen Bildschirmen nur den Home-Link anzeigen */
+      nav ul li:not(:first-child) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav ul li {
+        margin: 0 5px;
+      }
+
+      .surah-list {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Menü -->
+  <nav>
+    <ul>
+      <li><a href="https://ahmadiyya.de/koran/" target="_blank" class="menu-item">Über den Quran🌐</a></li>
+      <li><a href="test.html" class="menu-item">WAQF-E-RAHALLAH</a></li>
+      <li><a href="https://ahmadiyya.de/wp-content/uploads/site_uploads/library/der_heilige_koran_2021.pdf" target="_blank" class="menu-item">PDF-Koran</a></li>
+      <li><a href="https://ahmadiyya.de/wp-content/uploads/site_uploads/library/abu_abier-die_regeln_der_rezitation_des_heiligen_quran.pdf" target="_blank" class="menu-item">Regeln der Rezitation-PDF</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- Liste der Suren -->
+    <section class="verse-section" id="suren">
+      <ul class="surah-list" id="surah-list">
+        <!-- Links für alle Suren von 1 bis 114 werden hier dynamisch hinzugefügt -->
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    // Dynamische Erstellung der Links für Suren 1 bis 114
+    const surahList = document.getElementById('surah-list');
+
+    for (let i = 1; i <= 114; i++) {
+      let listItem = document.createElement('li');
+      let anchorTag = document.createElement('a');
+      anchorTag.href = `https://www.alislam.org/quran/app/${i}`;
+      anchorTag.target = "_blank";
+      anchorTag.classList.add('quran-link');
+      anchorTag.innerText = `Sure ${i}`;
+      listItem.appendChild(anchorTag);
+      surahList.appendChild(listItem);
+    }
+
+    // Menüpunkt aktiv setzen (LED-Effekt)
+    const menuItems = document.querySelectorAll('.menu-item');
+    menuItems.forEach(item => {
+      item.addEventListener('click', () => {
+        menuItems.forEach(link => link.classList.remove('active')); // Entfernt 'active' von allen Links
+        item.classList.add('active'); // Fügt 'active' zum geklickten Link hinzu
+      });
+    });
+  </script>
+
+</body>
+</html>
+
