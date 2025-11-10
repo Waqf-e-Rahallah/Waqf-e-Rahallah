@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einfacher URL-Sucher</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input[type=text] {
+            width: 300px;
+            padding: 8px;
+        }
+        button {
+            padding: 8px 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>URL-Sucher</h1>
+    <p>Gib eine URL oder Suchbegriffe ein:</p>
+    <input type="text" id="query" placeholder="z. B. https://example.com oder Suchbegriff">
+    <button onclick="search()">Los</button>
+
+    <script>
+        function search() {
+            const input = document.getElementById('query').value.trim();
+            if (!input) return;
+
+            // Prüfen, ob es eine URL ist
+            let url;
+            try {
+                url = new URL(input);
+            } catch (_) {
+                // Wenn kein URL-Format, Suche via Google
+                url = 'https://www.google.com/search?q=' + encodeURIComponent(input);
+            }
+
+            window.open(url, '_blank'); // öffnet in neuem Tab
+        }
+    </script>
+</body>
+</html>
